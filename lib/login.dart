@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lab1bis3r1/homepage.dart';
 import 'package:lab1bis3r1/register.dart';
 
 class login extends StatefulWidget {
@@ -12,6 +13,14 @@ class login extends StatefulWidget {
 
 class _loginState extends State<login> {
   @override
+  TextEditingController username_input = TextEditingController();
+  TextEditingController password_input = TextEditingController();
+  void initState() {
+    super.initState();
+    username_input.text = widget.comingData['username'].toString();
+    password_input.text = widget.comingData['password'].toString();
+  }
+
   Widget logo() {
     return Container(
       width: 192,
@@ -38,9 +47,10 @@ class _loginState extends State<login> {
     return Container(
       margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
       child: TextFormField(
+        controller: username_input,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-          labelText: widget.comingData['username'],
+          labelText: 'username',
           labelStyle: TextStyle(
               color: Color.fromARGB(255, 248, 111, 111),
               fontWeight: FontWeight.w800),
@@ -59,9 +69,10 @@ class _loginState extends State<login> {
     return Container(
       margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
       child: TextFormField(
+        controller: password_input,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-          labelText: widget.comingData['password'],
+          labelText: 'password',
           labelStyle: TextStyle(
               color: Color.fromARGB(255, 248, 111, 111),
               fontWeight: FontWeight.w800),
@@ -91,7 +102,15 @@ class _loginState extends State<login> {
           backgroundColor: Colors.green,
         ),
         onPressed: () {
-          print("Login");
+          Map<String, String> dataLogin = {
+            "username": username_input.text.toString(),
+            "password": password_input.text.toString(),
+          };
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => homepage(comingData: dataLogin),
+              ));
         },
       ),
     );

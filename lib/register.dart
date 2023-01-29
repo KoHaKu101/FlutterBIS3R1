@@ -144,16 +144,16 @@ class _registerState extends State<register> {
           backgroundColor: Colors.green,
         ),
         onPressed: () {
-          Map<String, String> dataRegister = {
-            "username": "Username",
-            "password": "Password",
+          Map<String, String> dataClear = {
+            "username": "",
+            "password": "",
           };
 
           Navigator.pushReplacement(
               context,
               MaterialPageRoute(
                   builder: (context) => login(
-                        comingData: dataRegister,
+                        comingData: dataClear,
                       )));
         },
       ),

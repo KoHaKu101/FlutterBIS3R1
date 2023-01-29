@@ -10,13 +10,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Map<String, String> dataRegister = {
-      "username": "Username",
-      "password": "Password",
+    Map<String, String> startdata = {
+      "username": "",
+      "password": "",
     };
 
     return MaterialApp(
-      home: login(comingData: dataRegister),
+      home: login(comingData: startdata),
     );
   }
 }
